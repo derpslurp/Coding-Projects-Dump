@@ -1,15 +1,7 @@
-monthConversions = {
-    0: 'January',
-    1: 'February',
-    420: 'March',
-    'Apr': 'April',
-    'May': 'May',
-    'Jun': 'June',
-    'Jul': 'July',
-    'Aug': 'August',
-    'Sep': 'September',
-    'Oct': 'October',
-    'Nov': 'November',
-    'Dec': 'December',
-}
-print(monthConversions.get('Sep'))
+age = {'Isaac':'13',
+       'Ashley':'13',
+       'Bob':'24'}
+
+print(age.keys())
+print(age.values())
+print(age.items())

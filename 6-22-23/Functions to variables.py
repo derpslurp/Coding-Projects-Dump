@@ -1,0 +1,3 @@
+say = print
+
+say('hi')

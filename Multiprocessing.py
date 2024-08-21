@@ -1,21 +1,32 @@
-#Multiprocessing allows the system to run multiple processes at once
-from multiprocessing import Process, Value
+from multiprocessing import Process, cpu_count
 import time
 
-def add_100(number):
-    for i in range(100):
-        time.sleep(0.01)
-        number.value += 1
+def counter(num):
+    count = 0
+    while count < num:
+        count += 1
+
+def main():
+
+    print(cpu_count())
+
+    a = Process(target=counter, args=(250000000,))
+    a.start()
+
+    b = Process(target=counter, args=(250000000,))
+    b.start()
+
+    c = Process(target=counter, args=(250000000,))
+    c.start()
+
+    d = Process(target=counter, args=(250000000,))
+    d.start()
+
+    a.join()
+    b.join()
+    c.join()
+    d.join()
+    print('finished in:',time.perf_counter(),"seconds")
 
 if __name__ == "__main__":
-
-    shared_number = Value('i', 0)
-    print('Number at beginning is', shared_number.value)
-
-    p1 = Process(target=add_100, args=(shared_number,))
-
-    p1.start()
-
-    p1.join()
-
-    print('number at end is', shared_number.value)
+    main()
